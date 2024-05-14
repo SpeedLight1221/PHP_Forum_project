@@ -38,9 +38,9 @@ else
             include 'Templates/navbar.php';
         ?>
     
-    <section class=" justify-center flex  z-[0] min-h-[75vh] h-[75vh] bg-gradient-to-tr from-cyan-900 to-cyan-600  ">
+    <section class=" justify-center flex  z-[0] min-h-[75vh] h-auto  bg-gradient-to-tr from-cyan-900 to-cyan-600  ">
 
-        <div class=" h-full bg-black bg-opacity-20 w-[85%] min-h-full">
+        <div class=" bg-black bg-opacity-20 w-[85%] h-auto  justify-center flex">
            <?php
             include $redirPath;
            ?>

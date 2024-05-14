@@ -5,7 +5,7 @@
             <form method="POST" action="/Backend/Controls/Redirect.php">
                 <input type="submit" value="Home" name="Direction" class="text-base align-middle text-center w-[10vw]">
                 <input type="submit" value="Categories" name="Direction" class="text-base align-middle  text-center w-[10vw]">
-                <input type="submit" class="text-base align-middle  text-center w-[10vw]">
+                <input type="submit" value="Post" name="Direction" class="text-base align-middle  text-center w-[10vw]">
             </form>
 
 
