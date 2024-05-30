@@ -1,6 +1,7 @@
 
 
 <?php 
+    session_start();
 
 if(isset($_REQUEST['contentPath']))
 {
@@ -11,6 +12,17 @@ else
     $redirPath = 'Templates/test.html';
 }
 
+if(isset($_REQUEST['contentArg']))
+{
+    $redirArg = $_REQUEST['contentArg'];
+}
+else
+{
+    $redirArg = "";
+}
+
+echo$redirPath;
+echo $redirArg;
 
 
 ?>

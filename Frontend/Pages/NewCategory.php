@@ -1,15 +1,27 @@
 <section class="flex w-[80%] flex-col ">
     <h1 class=" text-center mt-[5%] text-3xl font-bold ">Create a Post</h1>
-    <p id="ErrorTag" class=" text-center mt-[5%] font-bold "><?php if($redirArg == "categoryError")echo "The selected category doesn't exist!" ?></p>
+    <p id="ErrorTag" class=" text-center mt-[5%] font-bold ">
+        
+    
+    <?php 
+    if($redirArg == "ExistsError")
+    echo "This category already exists";
+    elseif($redirArg == "userError")
+    echo "You need to be logged in";
 
-    <form id="pForm" class=" align-middle flex flex-col items-center " method="post" action="../Backend/Forms/PostForm.php">
+
+
+?>
+</p>
+
+    <form id="pForm" class=" align-middle flex flex-col items-center " method="post" action="../Backend/Forms/CategoryForm.php">
 
         <input type="text" name="CategoryInput" class=" m-[5%] bg-white w-[80%]"></input>
 
-        <label for="TitleInput" class=" text-xl">Title:</label>
+        <label for="TitleInput" class=" text-xl">Category name: </label>
         <input type="text" name="TitleInput" class="w-[80%]  h-[5%]">
 
-        <label for="ContentInput" class="text-xl mt-[5%]">Text:</label>
+        <label for="ContentInput" class="text-xl mt-[5%]">Description: </label>
         <textarea  type="text" name="ContentInput" class="w-[80%]  h-[50vh] text-start align-top content-start  "></textarea>
 
 
@@ -48,7 +60,7 @@
             if (data.get("ContentInput").length < 25)
             {
                 e.preventDefault();
-                document.getElementById("ErrorTag").innerText = "Content must be atleast 25 characters long!"
+                document.getElementById("ErrorTag").innerText = "Description must be atleast 25 characters long!"
                 return;
             }
            
