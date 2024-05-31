@@ -21,6 +21,7 @@ $users_selectByID = $conn->prepare("SELECT * FROM users WHERE ID = ?");
 $category_selectAll = $conn->prepare("SELECT * FROM category");
 $catgory_IDfromName = $conn->prepare("SELECT ID FROM category where Title= ?");
 $category_insert = $conn->prepare("INSERT INTO category (Title,Description) VALUES (?,?)");
+$catgory_selectByID = $conn->prepare("SELECT * FROM category where ID= ?");
 
 $post_SelectAllByCategory = $conn->prepare("SELECT * FROM post WHERE CategoryID = ?");
 $post_insert = $conn->prepare("INSERT INTO post (Title,Content,Posted,NSFW,Spoiler,AuthorID,CategoryID,Rating) VALUES (?,?,?,?,?,?,?,?)");
@@ -123,6 +124,15 @@ function db_Category_Insert($title,$desc){
     $category_insert->execute();
     return $category_insert->insert_id;
 }
+
+function db_Category_SelectByID($id)
+{
+    global $catgory_selectByID;
+    $catgory_selectByID->bind_param('i',$id);
+    $catgory_selectByID->execute();
+    return $catgory_selectByID->get_result(); 
+}
+
 
 
 

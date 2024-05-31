@@ -1,12 +1,6 @@
+<header class="h-[15vh] z-10">
+    <div class=" items-center  m-0 h-full bg-cyan-800 flex">
+        <p class=" ml-[2%]  h-fit text-center text-5xl font-extrabold font-sans"><span class=" text-cyan-500 ">OPEN</span>FORUMS</p>
 
-    <header class="h-[20vh] z-10">
-
-
-      
-        <div class="  m-0 h-full align-middle bg-cyan-900 grid place-items-center">
-            <p class=" text-center text-5xl  bg-green-500">Forum or smth</p>
-           
-        </div>
-        
-
-    </header>
+    </div>
+</header>

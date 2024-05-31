@@ -9,7 +9,7 @@ if(isset($_REQUEST['contentPath']))
 }
 else
 {
-    $redirPath = 'Templates/test.html';
+    $redirPath = 'Pages/Home.php';
 }
 
 if(isset($_REQUEST['contentArg']))
@@ -21,8 +21,7 @@ else
     $redirArg = "";
 }
 
-echo$redirPath;
-echo $redirArg;
+
 
 
 ?>
@@ -50,9 +49,9 @@ echo $redirArg;
             include 'Templates/navbar.php';
         ?>
     
-    <section class=" justify-center flex  z-[0] min-h-[75vh] h-auto  bg-gradient-to-tr from-cyan-900 to-cyan-600  ">
+    <section class=" justify-center flex  z-[0] min-h-[75vh] h-auto  bg-cyan-800  ">
 
-        <div class=" bg-black bg-opacity-20 w-[85%] h-auto  justify-center flex">
+        <div class="w-[85%] h-auto  justify-center flex">
            <?php
             include $redirPath;
            ?>

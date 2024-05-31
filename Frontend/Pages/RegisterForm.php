@@ -1,4 +1,5 @@
-<section>
+<section class="flex w-[30%] mt-16 flex-col bg-cyan-700  rounded-2xl mb-[5%]">
+<h1 class=" text-center mt-[1%] text-3xl font-bold ">Register</h1>
 
     <?php 
         $err = "";
@@ -23,15 +24,15 @@
 
 
     <p id="ErrorTag"><?php print($err);?></p>
-    <form id="rForm" method="post" action="../Backend/Forms/Register.php">
+    <form id="rForm" method="post" action="../Backend/Forms/Register.php"  class=" align-middle flex flex-col items-center ">
 
-        <label for="Username">Username:</label><br>
-        <input type="text" minlength="4" maxlength="40" name="Username" required><br>
-        <label for="Pass">Password:</label><br>
-        <input type="password" minlength="8" name="Pass" required><br>
-        <label for="PassCheck">Repeat Password:</label><br>
-        <input type="password" minlength="8" name="PassCheck" required><br>
-        <input type="submit"><br>
+        <label for="Username" class="font-semibold text-xl">Username:</label>
+        <input type="text" minlength="4" maxlength="40" name="Username" required class=" bg-cyan-700 border-cyan-800 border-[3px] rounded-2xl w-[95%]">
+        <label for="Pass" class="font-semibold text-xl">Password:</label>
+        <input type="password" minlength="8" name="Pass" required class=" bg-cyan-700 border-cyan-800 border-[3px] rounded-2xl w-[95%]">
+        <label for="PassCheck" class="font-semibold text-xl">Repeat Password:</label>
+        <input type="password" minlength="8" name="PassCheck" required class=" bg-cyan-700 border-cyan-800 border-[3px] rounded-2xl w-[95%]">
+        <input type="submit" class="w-[80%] font-semibold bg-cyan-600  border-cyan-800 border-[3px] rounded-2xl mb-[2%] mt-[2vh]  h-[5vh] ">
     </form>
 
     <script>
