@@ -12,6 +12,10 @@
             {
                 $err = "Incorrect password";
             }
+            else if ($_REQUEST['error']== "ban")
+            {
+                $err = "This account is banned until ". $_REQUEST['till'];
+            }
         
             
         }

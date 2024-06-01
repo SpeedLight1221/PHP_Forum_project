@@ -43,6 +43,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     try {
 
         db_User_Insert($name,_hash($pass),"8f83637e-d2bf-48ac-a667-d08cab18b935",date("Y-m-d"));
+        header("Location: ../../Frontend/index.php?contentPath=LoginForm.php");
+                die();
     } catch (Exception $e) {
         echo "error: " . $e;
     }

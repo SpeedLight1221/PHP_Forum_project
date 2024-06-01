@@ -15,9 +15,14 @@
 
 
             while ($row = $categories->fetch_assoc()) {
+                $c = db_Post_CountyByCategory($row['ID']);
+                if($c->num_rows > 0)
+                {
+                    $c = $c->fetch_row()[0];
+                }
 
                 echo ' <a class=" mt-2 mb-2 bg-white w-[100%] pl-4 pr-4 pt-2 pb-2 grid grid-cols-2 grid-rows-1 rounded-2xl" href="index.php?contentPath=Category.php&contentArg=' . $row['ID'] . '">
-                    <p class=" col-start-1 row-start-1 font-semibold text-xl">' . $row['Title'] . '</p><p class=" text-end  col-start-2 row-start-1"></p>
+                    <p class=" col-start-1 row-start-1 font-semibold text-xl">' . $row['Title'] . '</p><p class=" text-end  col-start-2 row-start-1">'.$c.'</p>
                     <p class=" row-start-2 row-end-3 col-start-1 col-end-3">' . $row['Description'] . '</p>
                     </a>';
             }
