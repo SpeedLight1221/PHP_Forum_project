@@ -26,6 +26,7 @@ $catgory_selectByID = $conn->prepare("SELECT * FROM category where ID= ?");
 $post_SelectAllByCategory = $conn->prepare("SELECT * FROM post WHERE CategoryID = ?");
 $post_insert = $conn->prepare("INSERT INTO post (Title,Content,Posted,NSFW,Spoiler,AuthorID,CategoryID,Rating) VALUES (?,?,?,?,?,?,?,?)");
 $post_select = $conn->prepare("SELECT * FROM post WHERE ID = ?");
+$post_selectRecent = $conn->prepare("SELECT * FROM post ORDER BY posted LIMIT 5");
 
 
 
@@ -160,6 +161,13 @@ function db_Post_Select($ID){
     $post_select->execute();
     return $post_select->get_result();
 
+}
+
+function db_Post_SelectRecent()
+{
+    global $post_selectRecent;
+    $post_selectRecent->execute();
+    return $post_selectRecent->get_result();
 }
 
 
