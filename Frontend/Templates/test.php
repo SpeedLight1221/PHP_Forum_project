@@ -7,6 +7,6 @@
     <title>Document</title>
 </head>
 <body>
-  <p class=" text-2xl text-green-300">eeeeeee</p>
+
 </body>
 </html>
