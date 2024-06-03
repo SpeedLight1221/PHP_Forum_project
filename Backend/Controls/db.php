@@ -32,7 +32,6 @@ $post_countByCategory = $conn->prepare("SELECT COUNT(post.ID) FROM post WHERE Ca
 
 $post_selectByUser = $conn->prepare("SELECT * FROM post WHERE AuthorID = ? ORDER BY Posted desc");
 $post_SelectAllByUser_Rating = $conn->prepare("SELECT * FROM post LEFT JOIN postrating on post.ID = postrating.PostID WHERE post.AuthorID = ? GROUP BY post.ID ORDER BY SUM(postrating.Val) desc");
-
 $front_DevLatest = $conn->prepare("SELECT * FROM post WHERE CategoryID = 1 ORDER BY Posted desc LIMIT 1 ");
 $front_TopPost = $conn->prepare("SELECT *, post.ID as MainID FROM post LEFT JOIN postrating on post.ID = postrating.PostID GROUP BY post.ID ORDER BY SUM(postrating.Val) desc LIMIT 1" );
 $front_TopCategory = $conn->prepare("SELECT *,category.Title as MainTitle, category.ID as MainID, Count(post.ID) as count FROM category LEFT JOIN post on category.ID = post.CategoryID GROUP BY category.ID ORDER BY Count(post.ID) desc LIMIT 1");
@@ -51,7 +50,6 @@ $admin_SelectByUser = $conn->prepare("SELECT *, administration.Hash as Code FROM
 $ban_user = $conn->prepare("UPDATE `users` SET bannedTill = ? WHERE id = ?");
 $delete_post = $conn->prepare("DELETE FROM `post` WHERE ID = ? ");
 $admin_Insert = $conn->prepare("INSERT INTO administration(AccountID, Hash) VALUES (?,?)");
-$admin_Select = $conn->prepare("SELECT * FROM administration WHERE AccountID = ?");
 
 if($conn->connect_error){
     die("Connection failed:". $connection->connect_error);

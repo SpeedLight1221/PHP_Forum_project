@@ -72,7 +72,11 @@ require '../Backend/Controls/db.php';
                 on <span class=" font-semibold"><?php echo $date; ?></span> <br> <span><?php echo $other ?></span></p>
 
         </div>
+<<<<<<< HEAD
         <p class="break-words m-5 leading-8 mt-10">
+=======
+        <p class=" m-5 leading-8 mt-10">
+>>>>>>> 6398dfc19c91e7be9e7754e9355141f0324b0bf5
             <?php echo $content; ?>
         </p>
         <script>
