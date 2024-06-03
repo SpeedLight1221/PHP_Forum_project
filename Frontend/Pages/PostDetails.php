@@ -67,16 +67,16 @@ require '../Backend/Controls/db.php';
             <h1 class=" w-[90%] ml-4 text-white font-extrabold text-3xl"><?php echo $title; ?></h1>
         </div>
         <div class=" mt-4 items-center w-full flex ">
-            <p>Posted by: <a href='href="index.php?contentPath=UserPage.php&contentArg=' class=" font-semibold"><?php echo $author; ?></a>
+            <p>Posted by: <a href='index.php?contentPath=UserPage.php&contentArg=<?php echo $author; ?>' class=" font-semibold"><?php echo $author; ?></a>
                 in: <span class=" font-semibold"><?php echo $category; ?></span>
                 on <span class=" font-semibold"><?php echo $date; ?></span> <br> <span><?php echo $other ?></span></p>
 
         </div>
-<<<<<<< HEAD
+
         <p class="break-words m-5 leading-8 mt-10">
-=======
+
         <p class=" m-5 leading-8 mt-10">
->>>>>>> 6398dfc19c91e7be9e7754e9355141f0324b0bf5
+
             <?php echo $content; ?>
         </p>
         <script>
