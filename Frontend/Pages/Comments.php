@@ -23,33 +23,29 @@
         </script>
 
 
-        <?php echo $redirArg; ?>
+       
 
         <section class="w-[95%]">
             <?php
 
-            /*$comments = db_comment_SelectAllByPost($redirArg);
+            $comments = db_comment_SelectAllByPost($redirArg);
                 if($comments->num_rows >0)
                 {
                     while($row = $comments->fetch_assoc())
                     {
-                        echo '<div><h2>'. DB_User_NameFromID($row['AuthorID']) . '<h2><br><p>' . $row['Content'] . '</p>';
+                        echo ' <article class=" mt-8 mb-8 flex-col flex min-h-[10vh] border-l-8 pl-6">
+                        <h2 class=" text-xl font-semibold">'.$row['Username'] .' says:</h2>
+                        <p>'. $row['Content'] .'</p>
+                        <p class=" mt-2 text-sm">'. $row['Posted'].'</p>
+                        </article>';
                     }
-                }*/
+                }
             ?>
 
-            <article class=" mt-8 mb-8 flex-col flex min-h-[10vh] border-l-8 pl-6">
-                <h2 class=" text-xl font-semibold">User says:</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus suscipit facilis natus eius dolore esse aspernatur reiciendis incidunt ipsum reprehenderit. Quod id nostrum eius nisi dicta at incidunt cum in!</p>
-                <p class=" mt-2 text-sm">Posted on 1.1.1111</p>
-            </article>
-            <article class=" mt-8 mb-8 flex-col flex min-h-[10vh] border-l-8 pl-6">
-                <h2 class=" text-xl font-semibold">User says:</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus suscipit facilis natus eius dolore esse aspernatur reiciendis incidunt ipsum reprehenderit. Quod id nostrum eius nisi dicta at incidunt cum in!</p>
-                <p class=" mt-2 text-sm">Posted on 1.1.1111</p>
-            </article>
+           
+       
 
-        </section>
+        </section> 
     </div>
 
 

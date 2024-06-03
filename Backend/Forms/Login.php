@@ -24,6 +24,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             if($row['Hash'] == $hashed)
             {
                 
+                if($row['bannedTill'] > date("Y-m-d"))
+                {
+                    header("Location: ../../Frontend/index.php?contentPath=LoginForm.php&error=ban&till=".$row['bannedTill']);
+                die();
+                }
+
                 $_SESSION['Logged_User'] = $row['Username'];
                 $_SESSION['Logged_UUID'] = $row['UUID'];
                 echo $row['Username'];
@@ -33,12 +39,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             }
             else
             {
-                header("Location: ../../Frontend/Pages/LoginForm.php?error=password");
+                header("Location: ../../Frontend/index.php?contentPath=LoginForm.php&error=password");
                 die();
             }
         }
     }
-    header("Location: ../../Frontend/Pages/LoginForm.php?error=user");
+    header("Location: ../../Frontend/index.php?contentPath=LoginForm.php&error=user");
     die();
 
 

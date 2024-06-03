@@ -26,7 +26,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 
     db_comment_Insert($post,$author,$content);
 
-    header("Location: ../../Frontend/index.php?contentPath=Post.php&contentArg=" . $post);
+    header("Location: ../../Frontend/index.php?contentPath=PostDetails.php&contentArg=" . $post);
     die();
 
 }
