@@ -88,11 +88,20 @@ require '../Backend/Controls/db.php';
             let mBtn = document.getElementById("minus");
 
             let val = <?php echo $Current_User_Rating ?>;
+            let usr = "<?php echo $_SESSION['Logged_User'] ?>";
 
             ChangeColors();
 
 
             pBtn.addEventListener("click",(e)=>{
+                if(!usr)
+                {
+                    document.getElementById("ErrorTag").innerText = "You must log in in order react!"
+                    return;
+                }
+
+                console.log(usr);
+                
                 if(val ==1)
                 {
                     val = 0;
@@ -105,6 +114,12 @@ require '../Backend/Controls/db.php';
             })
 
             mBtn.addEventListener("click",(e)=>{
+
+                if(!usr)
+                {
+                    document.getElementById("ErrorTag").innerText = "You must log in in order react!"
+                    return;
+                }
                 if(val ==-1)
                 {
                     val = 0;
@@ -131,7 +146,7 @@ require '../Backend/Controls/db.php';
 
 
             function ChangeColors() {
-                console.log(val);
+               
                 if (val == 1) {
                     pBtn.classList.remove("bg-white");
                     pBtn.classList.add("bg-cyan-500");
