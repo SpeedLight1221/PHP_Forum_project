@@ -1,6 +1,11 @@
 <section class="flex w-[80%] mt-16 flex-col bg-cyan-700  rounded-2xl mb-[5%] ">
     <h1 class=" text-center mt-[1%] text-3xl font-bold ">Create a Post</h1>
-    <p id="ErrorTag" class=" text-center mt-[5%] font-bold "><?php if($redirArg == "categoryError")echo "The selected category doesn't exist!" ?></p>
+    <p id="ErrorTag" class=" text-center mt-[5%] font-bold "><?php 
+    if($redirArg == "categoryError"){
+        echo "The selected category doesn't exist!"; }
+    else if ($redirArg == "restrictedError")
+        echo "You cannot post in the selected category";
+    ?></p>
 
     <form id="pForm" class=" align-middle flex flex-col items-center " method="post" action="../Backend/Forms/PostForm.php">
         

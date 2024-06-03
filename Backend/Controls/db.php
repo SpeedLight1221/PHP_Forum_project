@@ -30,6 +30,9 @@ $post_select = $conn->prepare("SELECT * FROM post  WHERE ID = ?");
 $post_selectRecent = $conn->prepare("SELECT * FROM post ORDER BY posted LIMIT 5");
 $post_countByCategory = $conn->prepare("SELECT COUNT(post.ID) FROM post WHERE CategoryID = ?");
 
+$post_selectByUser = $conn->prepare("SELECT * FROM post WHERE AuthorID = ? ORDER BY Posted desc");
+$post_SelectAllByUser_Rating = $conn->prepare("SELECT * FROM post LEFT JOIN postrating on post.ID = postrating.PostID WHERE post.AuthorID = ? GROUP BY post.ID ORDER BY SUM(postrating.Val) desc");
+
 $front_DevLatest = $conn->prepare("SELECT * FROM post WHERE CategoryID = 1 ORDER BY Posted desc LIMIT 1 ");
 $front_TopPost = $conn->prepare("SELECT *, post.ID as MainID FROM post LEFT JOIN postrating on post.ID = postrating.PostID GROUP BY post.ID ORDER BY SUM(postrating.Val) desc LIMIT 1" );
 $front_TopCategory = $conn->prepare("SELECT *,category.Title as MainTitle, category.ID as MainID, Count(post.ID) as count FROM category LEFT JOIN post on category.ID = post.CategoryID GROUP BY category.ID ORDER BY Count(post.ID) desc LIMIT 1");
@@ -48,11 +51,30 @@ $admin_SelectByUser = $conn->prepare("SELECT *, administration.Hash as Code FROM
 $ban_user = $conn->prepare("UPDATE `users` SET bannedTill = ? WHERE id = ?");
 $delete_post = $conn->prepare("DELETE FROM `post` WHERE ID = ? ");
 $admin_Insert = $conn->prepare("INSERT INTO administration(AccountID, Hash) VALUES (?,?)");
+$admin_Select = $conn->prepare("SELECT * FROM administration WHERE AccountID = ?");
 
 if($conn->connect_error){
     die("Connection failed:". $connection->connect_error);
 }
 
+
+function db_Admin_SelectByID($id)
+{
+    global $admin_Select;
+    $admin_Select->bind_param("i",$id);
+    $admin_Select->execute();
+    return $admin_Select->get_result();
+}
+
+function DB_IsAdmin($id) : bool
+{
+    if(db_Admin_SelectByID($id)->num_rows >0)
+    {
+        return true;
+    }
+    else
+        return false;
+}
 
 function db_Admin_Insert($uid,$hash)
 {
@@ -211,8 +233,21 @@ function DB_Category_NameFromID($id)
     }
 }
 
+function db_Post_ByUser($id)
+{
+    global $post_selectByUser;
+    $post_selectByUser->bind_param("i",$id);
+    $post_selectByUser->execute();
+    return $post_selectByUser->get_result();
+}
 
-
+function db_Post_ByUserOrderByRating($id)
+{
+    global $post_SelectAllByUser_Rating;
+    $post_SelectAllByUser_Rating->bind_param("i",$id);
+    $post_SelectAllByUser_Rating->execute();
+    return $post_SelectAllByUser_Rating->get_result();
+}
 
 function db_Post_SelectAllByCategory($catID)
 {
@@ -223,6 +258,7 @@ function db_Post_SelectAllByCategory($catID)
 }
 function db_Post_Insert($Title,$Content,$Posted,$NSFW,$Spoiler,$AuthorID,$CategoryID)
 {
+
 
     global $post_insert;
     $post_insert->bind_param("sssiiii",$Title,$Content,$Posted,$NSFW,$Spoiler,$AuthorID,$CategoryID);

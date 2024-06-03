@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 if($_SERVER['REQUEST_METHOD'] == 'POST')
 {
 
@@ -47,6 +47,11 @@ $direction = htmlspecialchars($_POST['Direction']);
         else if($direction == 'New Category')
         {
             header("Location: ../../Frontend/index.php?contentPath=NewCategory.php");
+            die();
+        }
+        else if($direction == $_SESSION['Logged_User'])
+        {
+            header("Location: ../../Frontend/index.php?contentPath=UserPage.php&contentArg=".$_SESSION['Logged_User']);
             die();
         }
 

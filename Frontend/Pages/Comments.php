@@ -34,7 +34,7 @@
                     while($row = $comments->fetch_assoc())
                     {
                         echo ' <article class=" mt-8 mb-8 flex-col flex min-h-[10vh] border-l-8 pl-6">
-                        <h2 class=" text-xl font-semibold">'.$row['Username'] .' says:</h2>
+                        <a href="index.php?contentPath=UserPage.php&contentArg='.$row['Username'].'"><h2 class=" text-xl font-semibold">'.$row['Username'] .' says:</h2></a>
                         <p>'. $row['Content'] .'</p>
                         <p class=" mt-2 text-sm">'. $row['Posted'].'</p>
                         </article>';

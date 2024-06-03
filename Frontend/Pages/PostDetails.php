@@ -67,12 +67,12 @@ require '../Backend/Controls/db.php';
             <h1 class=" w-[90%] ml-4 text-white font-extrabold text-3xl"><?php echo $title; ?></h1>
         </div>
         <div class=" mt-4 items-center w-full flex ">
-            <p>Posted by: <a href='href="index.php?contentPath=User.php&contentArg=' class=" font-semibold"><?php echo $author; ?></a>
+            <p>Posted by: <a href='href="index.php?contentPath=UserPage.php&contentArg=' class=" font-semibold"><?php echo $author; ?></a>
                 in: <span class=" font-semibold"><?php echo $category; ?></span>
                 on <span class=" font-semibold"><?php echo $date; ?></span> <br> <span><?php echo $other ?></span></p>
 
         </div>
-        <p class=" m-5 leading-8 mt-10">
+        <p class="break-words m-5 leading-8 mt-10">
             <?php echo $content; ?>
         </p>
         <script>
