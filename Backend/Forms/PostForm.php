@@ -44,6 +44,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $r = $usr->fetch_assoc();
         $author = $r['ID'];
     }
+
+    if($category == 1)
+    {
+        if(!DB_IsAdmin($author))
+        {
+            header("Location: ../../Frontend/index.php?contentPath=Post.php&contentArg=restrictedError");
+            die();
+        }
+    }
+
+
     $id = db_Post_Insert($title, $content, date("Y-m-d"), $isNsfw, $isSpoiler, $author, $category,0);
     
 
